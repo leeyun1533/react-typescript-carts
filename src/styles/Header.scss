@@ -1,0 +1,33 @@
+@import "./base.scss";
+
+.header {
+    background-color: $header-bg-color;
+    height: 70px;
+    
+    @include flexbox();
+    @include justify-content(center);
+    @include align-items(center);
+    ul {
+        > a {
+            text-decoration: none;
+            color: white;
+            background: #17a1ff;
+            font-size: $s16;
+            border-radius: $s8;
+            padding: $s4;
+            margin: $s8;
+            .badge {
+                border-radius: 50%;
+                background-color: black;
+                color: white;
+                display: inline-block;
+                width: $base-font-color-sm;
+                height: $base-font-color-sm;
+                padding: $s4 $s8;
+                font-size: $base-font-color-sm;
+                position: absolute;
+                top: $s12;
+            }
+        }
+    }
+}

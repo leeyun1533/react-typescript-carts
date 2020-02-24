@@ -1,0 +1,53 @@
+@import "./base.scss";
+
+.item-container {
+    background-color: white;
+    margin: $s8 $s6;
+    border-radius: $s8;
+    width: $list-card-size-width;
+    height: $list-card-size-height;
+
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+    transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+      
+    &:hover {
+    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+    }
+
+    img {
+        border-radius: $card-border-radius;
+    }
+    .item-detail {
+        .item-detail-header {
+            width: 100%;
+            height: 130px;
+            background-size: cover;
+            border-radius: $card-border-radius;
+            color: white;
+            font-weight: bold;
+            @include flexbox();
+            @include justify-content(flex-end);
+            @include align-items(flex-end);
+        }
+        .item-detail-body {
+            text-align: left;
+            padding: $s12 $s16;
+            .item-detail-name {
+                font-size: $base-font-size-large;
+                margin-bottom: $s4;
+                font-weight: bold;
+            }
+            .item-detail-age {
+                font-size: 14px;
+                color: $base-font-color-sm;
+            }
+            .item-delete-button {
+                float: right;
+                color: rgb(0, 255, 123);
+                border: $button-border;
+                border-radius: $button-border-radius;
+                background-color: white;
+            }
+        }
+    }
+}

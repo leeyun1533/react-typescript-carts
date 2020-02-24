@@ -1,0 +1,24 @@
+@import "./flexbox.scss";
+
+$header-bg-color: #EAEAEA;
+
+$base-font-size-large: 18px;
+$base-font-size: 14px;
+
+$list-card-size-width: 265px;
+$list-card-size-height: 230px;
+
+$s4: 4px;
+$s6: 6px;
+$s8: 8px;
+$s12: 12px;
+$s16: 16px;
+
+$card-border-radius: $s8 $s8 0 0;
+$button-border: 1px solid rgb(0, 255, 123);
+$button-border-radius: $s4;
+
+$base-font-color-md: black;
+$base-font-color-sm: #abb1b1;
+
+$base-line-hight: 1.27em;
