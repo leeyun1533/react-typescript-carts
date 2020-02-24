@@ -1,32 +1,30 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom'
 
 import '../styles/Header.scss'
+import { useSelector, useDispatch } from 'react-redux';
+import { RootState } from '../stores';
 
 
+const Header = () => {
+  const basketListLength = useSelector((state: RootState) => state.basket.basketList.length);
 
-
-
-class Basket extends Component {
-  render() {
-    // const basketListLength = this.props.itemDataStore.basketList.length > 0 ? this.props.itemDataStore.basketList.length : ''
-    return (
-      <div className="header">
-        <ul>
-          <Link to="/">제품목록</Link>
-          {/* <Link to="/basket">장바구니
-                {
-                    basketListLength ? (
-                        <span className="badge">{basketListLength}</span>
-                    ) : (
-                        <span></span>
-                    )
-                }
-            </Link> */}
-        </ul>
-      </div>
-    );
-  }
+  return (
+    <div className="header">
+      <ul>
+        <Link to="/">제품목록</Link>
+        <Link to="/basket">장바구니
+            {
+            basketListLength ? (
+              <span className="badge">{basketListLength}</span>
+            ) : (
+                <span></span>
+              )
+          }
+        </Link>
+      </ul>
+    </div>
+  );
 }
 
-export default Basket;
+export default Header;

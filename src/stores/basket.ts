@@ -12,11 +12,11 @@ type ItemTypes = {
   count: number,
 }
 
-export const setItemData = (list: Array<object>) => ({
+export const setItemData = (list: Array<ItemTypes>) => ({
   type: SET_ITEM_DATA,
   payload: list
 });
-export const addToBasketData = (basketData: ItemTypes) => ({ type: ADD_TO_BASKET_DATA, basketData: basketData });
+export const addToBasketData = (basketData: ItemTypes) => ({ type: ADD_TO_BASKET_DATA, basketData });
 export const removeBasketData = (id: number) => ({ type: REMOVE_BASKET_DATA, id });
 export const removeAllBasketData = () => ({ type: REMOVE_ALL });
 
@@ -37,36 +37,50 @@ const initialState: ItemState = {
   basketList: []
 }
 
-export default function itemAction(state: ItemState = initialState, action: ItemAction) {
+function itemAction(state: ItemState = initialState, action: ItemAction) {
   switch (action.type) {
     case SET_ITEM_DATA:
       return { ...state, itemList: [...action.payload] };
     case ADD_TO_BASKET_DATA:
-      const index = state.basketList.findIndex((item) => item._id === action.basketData._id)
-      if (!index) {
+      const basket = state.basketList.find((item) => item._id === action.basketData._id)
+      if (!basket) {
         return {
           ...state,
-          basketList: [...state.basketList, { ...state.basketList[index], count: 1 }]
+          basketList: [...state.basketList, { ...action.basketData, count: 1 }]
         }
       } else {
         return {
           ...state,
-          basketList: [...state.basketList, { ...state.basketList[index], count: state.basketList[index].count + 1 }]
+          basketList: state.basketList.map(item => {
+            if (item._id === action.basketData._id) {
+              item.count++;
+            }
+            return item;
+          })
         }
       }
     case REMOVE_BASKET_DATA:
       return {
-        // list: [...state.itemList, action.payload]
-      };
+        ...state,
+        basketList: state.basketList.filter(item => {
+          if (item._id === action.id) {
+            item.count--;
+            if (item.count !== 0) {
+              return item;
+            }
+          }
+        })
+      }
     case REMOVE_ALL:
       return {
-        // list: [...state.itemList, action.payload]
-      };
+        ...state, basketList: []
+      }
     default:
       return state;
   }
 }
 
+export default itemAction;
 
 
 
