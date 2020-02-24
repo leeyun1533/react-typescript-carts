@@ -10,7 +10,6 @@ import { removeAllBasketData } from '../stores/basket';
 const Basket = () => {
   const dispatch = useDispatch();
   const list = useSelector((state: RootState) => state.basket.basketList);
-  console.log(list)
 
   const clickBuyButton = () => {
     dispatch(removeAllBasketData())

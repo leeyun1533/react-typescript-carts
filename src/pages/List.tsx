@@ -9,7 +9,7 @@ import '../styles/ItemList.scss'
 
 
 
-const List = ({ location }: { location: string }) => {
+const List = () => {
     const list = useSelector((state: RootState) => state.basket.itemList);
     const dispatch = useDispatch();
     const getList = async () => {
@@ -26,7 +26,7 @@ const List = ({ location }: { location: string }) => {
         <div className="item-list-container">
             <div>
                 {
-                    list.map(item => <Item key={item._id} {...item}></Item>)
+                    list.map(item => <Item key={item._id} item={item}></Item>)
                 }
             </div>
 
